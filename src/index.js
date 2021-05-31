@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const blogData = require('./data/sampleBlog.js');
+const blogs = require('./data/blogDb.js');
 const path = require('path');
 
 const PORT = 3000;
