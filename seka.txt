@@ -79,3 +79,10 @@ app.get('/about', function (req, res) {
 
 tada html irasome: 
 <title>Express blog <%= '| '+ title %></title>
+
+
+<!-- //ikeliam bendra navigacijos faila dinamiskai -->
+//body dalyje index.ejs faile
+    <%- include('./partials/nav.ejs')%>
+
+    o partials direktorijoje esanciam nav.ejs faile ikeliam bendra html , naudojama visiems puslapiams( index, about, blogs)
