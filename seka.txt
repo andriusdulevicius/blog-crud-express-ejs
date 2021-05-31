@@ -19,3 +19,20 @@ app.listen(3000);
 pries app.listen(3000) pasidarom:
 //404 case , kai vartotojas ivede psl kurio nera
 app.use((req, res) => res.status(404).send('Ops , page not found'));
+
+pasirasom path constanta, ir nurodom kelia iki index.html , nauja index.js struktura atrodo taip:
+
+const express = require('express');
+const app = express();
+const path = require('path');
+
+const PORT = 3000;
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'pages', 'index.html'));
+});
+
+//404 case , kai vartotojas ivede psl kurio nera
+app.use((req, res) => res.status(404).send('Ops , page not found'));
+
+app.listen(PORT);
