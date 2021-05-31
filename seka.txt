@@ -62,4 +62,20 @@ app.get('/', function (req, res) {
 
 vietoj ilgesnio path nurodymo parasyti galime res.render('index');
 
-render automatiskai ima failus ir iesko is views folderio 
+render automatiskai ima failus ir iesko is views folderio
+
+galima darytis server side rendering, paduoti pvz pavadinima is backendo ir paduoti ji i html:
+
+index.js faile: 
+
+//about page
+app.get('/about', function (req, res) {
+  // res.sendFile(path.join(__dirname, 'pages', 'about.html'));
+  res.render('about', {
+    title: 'About Us',
+  });
+});
+
+
+tada html irasome: 
+<title>Express blog <%= '| '+ title %></title>

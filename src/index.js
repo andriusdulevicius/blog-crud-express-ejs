@@ -12,13 +12,17 @@ app.set('views', 'src/views');
 //homepage
 app.get('/', function (req, res) {
   // res.sendFile(path.join(__dirname, 'pages', 'index.html'));
+
+  //atvaizduojame puslapi
   res.render('index');
 });
 
 //about page
 app.get('/about', function (req, res) {
   // res.sendFile(path.join(__dirname, 'pages', 'about.html'));
-  res.render('about');
+  res.render('about', {
+    title: 'About Us',
+  });
 });
 
 //blogs page
