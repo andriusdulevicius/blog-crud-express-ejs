@@ -45,6 +45,7 @@ app.get('/blogs', function (req, res) {
   res.render('blogs', {
     title: 'Blog',
     page: 'blog',
+    blogs,
   });
 });
 
