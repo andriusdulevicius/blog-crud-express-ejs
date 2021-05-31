@@ -3,7 +3,6 @@ const app = express();
 const blogData = require('./data/sampleBlog.js');
 const blogs = require('./data/blogDb');
 const path = require('path');
-const router = express.Router();
 
 const PORT = 3000;
 
@@ -50,6 +49,7 @@ app.get('/blogs', function (req, res) {
   });
 });
 //
+
 //create blog page  /blog/create
 app.get('/blog/create', function (req, res) {
   // res.sendFile(path.join(__dirname, 'pages', 'blogs.html'));
@@ -64,6 +64,10 @@ const staticPath = path.join(__dirname, 'static');
 app.use(express.static(staticPath));
 
 //blog API   /api/blog gauti visus postus json pavidalu
+app.get('/api/blog', (req,res)=> {
+  res.json(blogs);
+});
+
 
 //404 case , kai vartotojas ivede psl kurio nera
 app.use((req, res) => res.status(404).send('Ops , page not found'));
