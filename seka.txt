@@ -36,3 +36,30 @@ app.get('/', function (req, res) {
 app.use((req, res) => res.status(404).send('Ops , page not found'));
 
 app.listen(PORT);
+
+
+susikuriam puslapius about , blog, itraukiam bootstrapa, atsikopijuojam templates ir t.t. ; 
+
+susiinstaliuojam ejs 
+npm install ejs
+
+//index.js faile nurodom(registruojam):
+
+//register view engine
+app.set('view engine', 'ejs');
+//render views home dir
+app.set('views', 'src/views');
+
+reikia pakeisti folderiu struktura:
+pages dir pervadinam i 'views' , o visu html failu galunes pakeiciam i 'ejs';
+
+Tada galime perdaryti ir index.js faila :
+
+app.get('/', function (req, res) {
+  // res.sendFile(path.join(__dirname, 'pages', 'index.html'));
+  res.render('index'); 
+});
+
+vietoj ilgesnio path nurodymo parasyti galime res.render('index');
+
+render automatiskai ima failus ir iesko is views folderio 

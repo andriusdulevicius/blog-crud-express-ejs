@@ -3,19 +3,28 @@ const app = express();
 const path = require('path');
 
 const PORT = 3000;
+
+//register view engine
+app.set('view engine', 'ejs');
+//render views home dir
+app.set('views', 'src/views');
+
 //homepage
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'pages', 'index.html'));
+  // res.sendFile(path.join(__dirname, 'pages', 'index.html'));
+  res.render('index');
 });
 
 //about page
 app.get('/about', function (req, res) {
-  res.sendFile(path.join(__dirname, 'pages', 'about.html'));
+  // res.sendFile(path.join(__dirname, 'pages', 'about.html'));
+  res.render('about');
 });
 
 //blogs page
 app.get('/blogs', function (req, res) {
-  res.sendFile(path.join(__dirname, 'pages', 'blogs.html'));
+  // res.sendFile(path.join(__dirname, 'pages', 'blogs.html'));
+  res.render('blogs');
 });
 
 const staticPath = path.join(__dirname, 'static');
