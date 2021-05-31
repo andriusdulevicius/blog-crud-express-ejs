@@ -1,0 +1,6 @@
+npm init , 
+npm install express eslint;
+.gitignore;
+ctrl+shift+p crete eslint configuration , jei neveikia, terminale bashe rasome ./node_modules/.bin/eslint --init ;
+atsidarus .eslintrc failui , ji issaugom , kad nusiimtu dvigubos kabutes ;
+
