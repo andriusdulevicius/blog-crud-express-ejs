@@ -85,4 +85,8 @@ tada html irasome:
 //body dalyje index.ejs faile
     <%- include('./partials/nav.ejs')%>
 
-    o partials direktorijoje esanciam nav.ejs faile ikeliam bendra html , naudojama visiems puslapiams( index, about, blogs)
+    o partials direktorijoje esanciam nav.ejs faile ikeliam bendra html , naudojama visiems puslapiams( index, about, blogs);
+
+    Su patikrinimu dinamiskai paduoti:
+
+     <title>Express blog <% if(title) { %> <%= '| ' + title %> <% } %></title>

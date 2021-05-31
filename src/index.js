@@ -14,7 +14,10 @@ app.get('/', function (req, res) {
   // res.sendFile(path.join(__dirname, 'pages', 'index.html'));
 
   //atvaizduojame puslapi
-  res.render('index');
+  res.render('index', {
+    title: 'Home',
+    page: 'home',
+  });
 });
 
 //about page
@@ -22,13 +25,24 @@ app.get('/about', function (req, res) {
   // res.sendFile(path.join(__dirname, 'pages', 'about.html'));
   res.render('about', {
     title: 'About Us',
+    page: 'about',
+  });
+});
+app.get('/contact', function (req, res) {
+  // res.sendFile(path.join(__dirname, 'pages', 'contact.html'));
+  res.render('contact', {
+    title: 'Contact Us',
+    page: 'contact',
   });
 });
 
 //blogs page
 app.get('/blogs', function (req, res) {
   // res.sendFile(path.join(__dirname, 'pages', 'blogs.html'));
-  res.render('blogs');
+  res.render('blogs', {
+    title: 'Blog',
+    page: 'blog',
+  });
 });
 
 const staticPath = path.join(__dirname, 'static');
