@@ -90,3 +90,10 @@ tada html irasome:
     Su patikrinimu dinamiskai paduoti:
 
      <title>Express blog <% if(title) { %> <%= '| ' + title %> <% } %></title>
+
+
+     <% %> - server side rendering (ejs braizas , kurio viduje rasome javascripta , ir visa js ivykdo backende) 
+
+     <%=  - atspausdina , nuima spec charakterius
+     <%-  - include() , %>   -
+     <%  nieko nespausdina tiesiog vykdo javascripta nurodyta %>
