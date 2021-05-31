@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
 const blogData = require('./data/sampleBlog.js');
-const blogs = require('./data/blogDb.js');
+const blogs = require('./data/blogDb');
 const path = require('path');
+const router = express.Router();
 
 const PORT = 3000;
 
@@ -48,10 +49,21 @@ app.get('/blogs', function (req, res) {
     blogs,
   });
 });
+//
+//create blog page  /blog/create
+app.get('/blog/create', function (req, res) {
+  // res.sendFile(path.join(__dirname, 'pages', 'blogs.html'));
+  res.render('createBlog', {
+    title: 'Create Blog',
+    page: 'createB',
+  });
+});
 
 const staticPath = path.join(__dirname, 'static');
 //statine direktorija, css, js , imgs ir kt statiniam failam
 app.use(express.static(staticPath));
+
+//blog API   /api/blog gauti visus postus json pavidalu
 
 //404 case , kai vartotojas ivede psl kurio nera
 app.use((req, res) => res.status(404).send('Ops , page not found'));
