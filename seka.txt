@@ -4,3 +4,18 @@ npm install express eslint;
 ctrl+shift+p crete eslint configuration , jei neveikia, terminale bashe rasome ./node_modules/.bin/eslint --init ;
 atsidarus .eslintrc failui , ji issaugom , kad nusiimtu dvigubos kabutes ;
 
+pasirasom pradines expresso komandas: 
+
+const express = require('express')
+const app = express()
+ 
+app.get('/', function (req, res) {
+  res.send('Hello World')
+})
+ 
+app.listen(3000);
+
+
+pries app.listen(3000) pasidarom:
+//404 case , kai vartotojas ivede psl kurio nera
+app.use((req, res) => res.status(404).send('Ops , page not found'));
