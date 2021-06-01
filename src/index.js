@@ -39,7 +39,7 @@ const staticPath = path.join(__dirname, 'static');
 app.use(express.static(staticPath));
 
 //isitraukti API route ir panaudoti cia , kad veiktu
-app.use('api/blog', apiRoutes);
+app.use('/api/blog', apiRoutes);
 
 //404 case , kai vartotojas ivede psl kurio nera
 app.use((req, res) => res.status(404).send('Ops , page not found'));

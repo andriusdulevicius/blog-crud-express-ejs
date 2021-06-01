@@ -1,6 +1,5 @@
 import MyFetch from './class/MyFetch.class.js';
 
-const submitBtn = document.querySelector('.btn-primary');
 const mainForm = document.getElementById('form');
 
 // MyFetch.getPosts()
