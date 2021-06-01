@@ -6,7 +6,7 @@ router.use(express.json());
 
 const Post = require('../../models/post');
 
-router.get('/blog/create', (req, res) => {
+router.post('/', (req, res) => {
   const { title, author, body } = req.body;
   //sukuriam nauja posta pagal post.js sukurta modeli
   const newPost = new Post({

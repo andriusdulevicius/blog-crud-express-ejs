@@ -20,8 +20,6 @@ export default class MyFetch {
       .then((res) => res.json())
       .then((data) => {
         successCallback(data);
-      })
-      .catch((err) => console.error(err.message));
-    return data;
+      });
   }
 }
