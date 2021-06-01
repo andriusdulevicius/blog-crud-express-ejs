@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const blogs = require('../data/blogDb');
+
+const Post = require('../models/post');
 
 //homepage
 router.get('/', function (req, res) {
@@ -31,12 +32,15 @@ router.get('/contact', function (req, res) {
 
 //blogs page
 router.get('/blogs', function (req, res) {
-  // res.sendFile(path.join(__dirname, 'pages', 'blogs.html'));
-  res.render('blogs', {
-    title: 'Blog',
-    page: 'blog',
-    blogs,
-  });
+  Post.find()
+    .then((result) => {
+      res.render('blogs', {
+        title: 'Blog',
+        page: 'blog',
+        blogs: result,
+      });
+    })
+    .catch((err) => console.error(err.message));
 });
 //
 
@@ -52,14 +56,13 @@ router.get('/blog/create', function (req, res) {
 //single page route
 router.get('/single/:id', function (req, res) {
   const blogId = req.params.id;
-  const found = blogs.find((b) => b.id === +blogId);
-  console.log(found);
-
-  res.render('singlePage', {
-    title: 'single post',
-    page: 'single',
-    post: found,
-  });
+  Post.findById(blogId).then((result) =>
+    res.render('singlePage', {
+      title: 'single post',
+      page: 'single',
+      result,
+    })
+  );
 });
 
 module.exports = router;

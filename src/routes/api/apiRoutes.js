@@ -1,32 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const blogs = require('../../data/blogDb');
-let blogId = 3;
+// const blogs = require('../../data/blogDb');
+
 router.use(express.json());
-//blog API   /api/blog gauti visus postus json pavidalu
-router.get('/', (req, res) => {
-  res.json(blogs);
-});
 
-router.post('/', (req, res) => {
-  console.log(' This is what was sent to server in body', req.body);
+const Post = require('../../models/post');
 
-  const { title, author, body, date } = req.body;
-  if (!req.body.title) {
-    res.status(400).json({ error: 'please enter a name' });
-    return;
-  }
-
-  const newBlog = {
-    id: ++blogId,
+router.get('/blog/create', (req, res) => {
+  const { title, author, body } = req.body;
+  //sukuriam nauja posta pagal post.js sukurta modeli
+  const newPost = new Post({
     title,
     author,
     body,
-    date,
-  };
+  });
+  //kad issaugoti duomenu bazeje naudojam .save() metoda
+  newPost
+    .save() //issaugom duomenis , kadangi asinchronine funkcija, reikia then
+    .then((result) => res.send(result))
+    .catch((err) => console.error(err));
 
-  blogs.push(newBlog);
-  res.json({ msg: 'success', redirect: '/blogs', blogs });
+  // blogs.push(newBlog);
+  // res.json({ msg: 'success', redirect: '/blogs'});
 });
 
 module.exports = router;
