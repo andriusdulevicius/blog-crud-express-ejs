@@ -49,4 +49,17 @@ router.get('/blog/create', function (req, res) {
   });
 });
 
+//single page route
+router.get('/single/:id', function (req, res) {
+  const blogId = req.params.id;
+  const found = blogs.find((b) => b.id === +blogId);
+  console.log(found);
+
+  res.render('singlePage', {
+    title: 'single post',
+    page: 'single',
+    post: found,
+  });
+});
+
 module.exports = router;
