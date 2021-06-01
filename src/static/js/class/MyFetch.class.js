@@ -7,10 +7,21 @@ export default class MyFetch {
     const data = await res.json();
     return data;
   }
-
-  static async createPost() {
-    const res = await fetch('api/create');
-    const data = await res.json();
+  //kitas budas bet daro tapati
+  //data turi buti paduota json formatu
+  static createPost(data, successCallback) {
+    fetch(MyFetch.baseUrl, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        successCallback(data);
+      })
+      .catch((err) => console.error(err.message));
     return data;
   }
 }

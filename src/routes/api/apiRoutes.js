@@ -18,15 +18,15 @@ router.post('/', (req, res) => {
   }
 
   const newBlog = {
-    id: (++blogId).toString(),
+    id: ++blogId,
     title,
     author,
     body,
     date,
   };
-  // res.json({ error: 'please fill in fields' });
+
   blogs.push(newBlog);
-  res.json({ msg: 'success', blogs });
+  res.json({ msg: 'success', redirect: '/blogs', blogs });
 });
 
 module.exports = router;
