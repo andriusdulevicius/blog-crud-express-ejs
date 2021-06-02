@@ -67,13 +67,4 @@ router.get('/single/:id', function (req, res) {
   );
 });
 
-//deleted page route
-router.get('/deleted/:id', function (req, res) {
-  //atvaizduojame puslapi
-  res.render('deleted', {
-    title: 'Deleted',
-    page: 'deleted',
-  });
-});
-
 module.exports = router;

@@ -28,7 +28,14 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req, res) => {
   Post.deleteOne(req.body)
     .then((result) => {
-      console.log(result);
+      res.json({ msg: 'success', redirect: '/blogs' });
+    })
+    .catch((err) => console.warn(err));
+});
+
+router.put('/:id', (req, res) => {
+  Post.updateOne(req.body)
+    .then((result) => {
       res.json({ msg: 'success', redirect: '/blogs' });
     })
     .catch((err) => console.warn(err));
