@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="/css/style.css" />
     <% if (page === 'createB') {%>
     <script src="/js/create.js" type="module"></script>
+    <%}%> <% if (page === 'single' || page === 'blog') {%>
+    <script src="/js/delete.js" type="module"></script>
     <%}%>
   </head>
   <body class="container">

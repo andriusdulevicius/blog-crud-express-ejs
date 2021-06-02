@@ -23,17 +23,14 @@ export default class MyFetch {
       });
   }
 
-  static deletePost(id) {
-    fetch(MyFetch.baseUrl + '/:id', {
+  static deletePost(id, successCallBack) {
+    fetch(MyFetch.baseUrl + '/' + id, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
       },
-      body: data,
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+      .then((data) => successCallBack(data));
   }
 }

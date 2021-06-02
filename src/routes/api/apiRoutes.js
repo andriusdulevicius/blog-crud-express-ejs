@@ -21,15 +21,17 @@ router.post('/', (req, res) => {
   //kad issaugoti duomenu bazeje naudojam .save() metoda
   newPost
     .save() //issaugom duomenis , kadangi asinchronine funkcija, reikia then
-    .then((result) => res.json({ msg: 'success', redirect: '/blogs' }))
+    .then(() => res.json({ msg: 'success', redirect: '/blogs' }))
     .catch((err) => console.error(err));
 });
 
-// router.get('/single/:id', function (req, res) {
-//   const blogId = req.params.id;
-//   Post.deleteOne(blogId)
-//     .then((result) => res.render('deleted', result))
-//     .catch((err) => console.warn(err));
-// });
+router.delete('/:id', (req, res) => {
+  Post.deleteOne(req.body)
+    .then((result) => {
+      console.log(result);
+      res.json({ msg: 'success', redirect: '/blogs' });
+    })
+    .catch((err) => console.warn(err));
+});
 
 module.exports = router;

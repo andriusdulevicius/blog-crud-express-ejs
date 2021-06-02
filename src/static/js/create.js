@@ -26,7 +26,6 @@ mainForm.addEventListener('submit', function (event) {
   const jsonFormData = JSON.stringify(Object.fromEntries(formData));
   // console.log(jsonFormData);
   MyFetch.createPost(jsonFormData, (result) => {
-    console.log(result);
     //redirecting to /blogs after submit
     result.redirect ? (window.location = result.redirect) : null;
   });

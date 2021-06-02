@@ -3,14 +3,14 @@
 <!-- //ikeliam bendra navigacijos faila dinamiskai -->
 <%- include('./partials/nav.ejs')%>
 <h1>Single blog page</h1>
-<section class="jumbotron text-center">
+<section id = "one-post" class="jumbotron text-center" data-post-id= "<%=blogId %>">
   <div class="container">
     <h2><%-result.title %></h2>
     <p class="lead text-muted"><%- result.author%></p>
     <p>
       <p> <%- result.body%></p>
       <a href="../blogs" class="btn btn-primary my-2">Go back to blogs</a>
-      <a href="../deleted" class="btn btn-danger my-2">delete</a>
+      <a id="deleteBtn" class="btn btn-danger my-2">delete</a>
     </p>
   </div>
 </section>

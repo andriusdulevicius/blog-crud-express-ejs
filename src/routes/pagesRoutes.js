@@ -62,12 +62,13 @@ router.get('/single/:id', function (req, res) {
       title: 'single post',
       page: 'single',
       result,
+      blogId,
     })
   );
 });
 
 //deleted page route
-router.get('/deleted', function (req, res) {
+router.get('/deleted/:id', function (req, res) {
   //atvaizduojame puslapi
   res.render('deleted', {
     title: 'Deleted',
