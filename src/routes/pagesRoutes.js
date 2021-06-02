@@ -22,6 +22,7 @@ router.get('/about', function (req, res) {
     page: 'about',
   });
 });
+
 router.get('/contact', function (req, res) {
   // res.sendFile(path.join(__dirname, 'pages', 'contact.html'));
   res.render('contact', {
@@ -63,6 +64,15 @@ router.get('/single/:id', function (req, res) {
       result,
     })
   );
+});
+
+//deleted page route
+router.get('/deleted', function (req, res) {
+  //atvaizduojame puslapi
+  res.render('deleted', {
+    title: 'Deleted',
+    page: 'deleted',
+  });
 });
 
 module.exports = router;

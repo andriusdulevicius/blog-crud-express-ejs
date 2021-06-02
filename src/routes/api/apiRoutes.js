@@ -7,21 +7,29 @@ router.use(express.json());
 const Post = require('../../models/post');
 
 router.post('/', (req, res) => {
-  const { title, author, body } = req.body;
+  // const { title, author, body } = req.body;
   //sukuriam nauja posta pagal post.js sukurta modeli
-  const newPost = new Post({
-    title,
-    author,
-    body,
-  });
+  const newPost = new Post(
+    req.body
+    //   {
+    //   title,
+    //   author,
+    //   body,
+    // }
+  );
+
   //kad issaugoti duomenu bazeje naudojam .save() metoda
   newPost
     .save() //issaugom duomenis , kadangi asinchronine funkcija, reikia then
-    .then((result) => res.send(result))
+    .then((result) => res.json({ msg: 'success', redirect: '/blogs' }))
     .catch((err) => console.error(err));
-
-  // blogs.push(newBlog);
-  // res.json({ msg: 'success', redirect: '/blogs'});
 });
+
+// router.get('/single/:id', function (req, res) {
+//   const blogId = req.params.id;
+//   Post.deleteOne(blogId)
+//     .then((result) => res.render('deleted', result))
+//     .catch((err) => console.warn(err));
+// });
 
 module.exports = router;

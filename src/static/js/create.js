@@ -27,5 +27,7 @@ mainForm.addEventListener('submit', function (event) {
   // console.log(jsonFormData);
   MyFetch.createPost(jsonFormData, (result) => {
     console.log(result);
+    //redirecting to /blogs after submit
+    result.redirect ? (window.location = result.redirect) : null;
   });
 });
