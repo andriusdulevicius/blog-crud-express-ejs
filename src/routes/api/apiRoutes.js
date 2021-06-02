@@ -26,19 +26,21 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  Post.deleteOne(req.body)
+  Post.findByIdAndRemove(req.params.id)
     .then((result) => {
       res.json({ msg: 'success', redirect: '/blogs' });
     })
     .catch((err) => console.warn(err));
 });
 
-// router.put('/:id', (req, res) => {
-//   Post.updateOne(req.body)
-//     .then((result) => {
-//       res.json({ msg: 'success', redirect: '/single/edit/:id' });
-//     })
-//     .catch((err) => console.warn(err));
-// });
+router.put('/', (req, res) => {
+  const { _id, title, author, body } = req.body;
+
+  Post.findByIdAndUpdate(_id, { title, author, body })
+    .then((result) => {
+      res.json({ msg: 'success', redirect: '/blogs' });
+    })
+    .catch((err) => console.warn(err));
+});
 
 module.exports = router;

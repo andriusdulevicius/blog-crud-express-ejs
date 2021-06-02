@@ -1,16 +1,21 @@
 import MyFetch from './class/MyFetch.class.js';
 
-const editBtn = document.getElementById('editBtn');
 const post = document.getElementById('one-post');
-const mainForm = document.getElementById('form');
+const editForm = document.getElementById('edit-form');
+const currentId = editForm.dataset.postId;
 
-// editBtn.addEventListener('click', function (event) {
-//   event.preventDefault();
-//   console.log('edit mode');
-//   const id = post.dataset.postId;
-//   MyFetch.editPost(id, (result) => {
-//     result.redirect ? (window.location = result.redirect) : null;
-//   });
-// });
+editForm.addEventListener('submit', function (event) {
+  event.preventDefault();
 
-const saveBtn = document.getElementById('saveBtn');
+  const formData = new FormData(editForm);
+  formData.append('_id', currentId);
+  //pavercia formData i json formata
+  const jsonFormData = JSON.stringify(Object.fromEntries(formData));
+  // console.log(jsonFormData);
+  MyFetch.updatePost(jsonFormData, (result) => {
+    console.log(result);
+
+    //redirecting to /blogs after submit
+    result.redirect ? (window.location = result.redirect) : null;
+  });
+});
