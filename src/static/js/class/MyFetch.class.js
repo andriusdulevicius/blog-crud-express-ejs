@@ -34,14 +34,14 @@ export default class MyFetch {
       .then((data) => successCallBack(data));
   }
 
-  static editPost(id, successCallBack) {
-    fetch(Myfetch.baseUrl + '/' + id, {
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => successCallBack(data));
-  }
+  // static editPost(id, successCallBack) {
+  //   fetch(MyFetch.baseUrl + '/' + id, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'content-type': 'application/json',
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => successCallBack(data));
+  // }
 }

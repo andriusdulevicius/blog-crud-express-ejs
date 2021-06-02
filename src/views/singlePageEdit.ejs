@@ -5,12 +5,12 @@
 <h1>Single blog page</h1>
 <section id = "one-post" class="jumbotron text-center" data-post-id= "<%=blogId %>">
   <div class="container">
-    <h2><%-result.title%></h2>
-    <p class="lead text-muted"><%- result.author%></p>
+    <h2><input value = "<%-result.title %>"/></h2>
+    <p class="lead text-muted"><input value = "<%-result.author %>"/></p>
     <p>
-      <p> <%- result.body%></p>
+      <p> <input value = "<%-result.body %>"/></p>
       <p> <%- result.createdAt.toLocaleString()%></p>
-      <a href = "/single/edit/<%-result._id%>" id="editBtn" class="btn btn-primary my-2">Edit</a>
+      <button  type="submit"  class="btn btn-primary my-2">Save</button>
       <a id="deleteBtn" class="btn btn-danger my-2">delete</a>
     </p>
   </div>

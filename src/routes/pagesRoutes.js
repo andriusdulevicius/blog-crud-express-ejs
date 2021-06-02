@@ -67,4 +67,17 @@ router.get('/single/:id', function (req, res) {
   );
 });
 
+//edit page route
+router.get('/single/edit/:id', function (req, res) {
+  const blogId = req.params.id;
+  Post.findById(blogId).then((result) => {
+    res.render('singlePageEdit', {
+      title: 'Edit',
+      page: 'edit',
+      result,
+      blogId,
+    });
+  });
+});
+
 module.exports = router;

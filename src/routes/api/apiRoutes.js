@@ -33,12 +33,12 @@ router.delete('/:id', (req, res) => {
     .catch((err) => console.warn(err));
 });
 
-router.put('/:id', (req, res) => {
-  Post.updateOne(req.body)
-    .then((result) => {
-      res.json({ msg: 'success', redirect: '/blogs' });
-    })
-    .catch((err) => console.warn(err));
-});
+// router.put('/:id', (req, res) => {
+//   Post.updateOne(req.body)
+//     .then((result) => {
+//       res.json({ msg: 'success', redirect: '/single/edit/:id' });
+//     })
+//     .catch((err) => console.warn(err));
+// });
 
 module.exports = router;
