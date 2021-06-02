@@ -34,6 +34,10 @@ router.delete('/:id', (req, res) => {
 });
 
 router.put('/', (req, res) => {
+  //galima id paduoti i nuoroda ir su req.params.id galima pasigauti id
+  //Post.findByIdAndUpdate(req.params.id, req.bdoy)
+  //tada static updatePost funkcijoje reikia nurodyti adresa su paduotu id /id , kuri pasiemam is edit.js
+  //paduodami currentId kaip argumenta, ir pasiemant static updatePoste
   const { _id, title, author, body } = req.body;
 
   Post.findByIdAndUpdate(_id, { title, author, body })
