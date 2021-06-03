@@ -6,6 +6,10 @@
 
 <main role="main">
   <h1 class="display-3">Add new owner</h1>
+  <% if (result) { %>
+  <div class="alert alert-success" role="alert">Owner <%= result.name %> created!</div>
+
+  <% } %>
   <form action="/api/owners" method="POST" id="form">
     <div class="form-group">
       <label for="name">Name</label>

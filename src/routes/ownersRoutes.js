@@ -14,14 +14,7 @@ router.get('/', (req, res) => {
 router.get('/new', (req, res) => {
   //get tai ka ivedam i adresa, o render kelias iki failo su ejs galune
 
-  //sukurti 3 ownerius:
-  const owners = [
-    { name: 'James', email: 'james@gmail.com' },
-    { name: 'Jane', email: 'Jane@gmail.com' },
-    { name: 'Brad', email: 'Brad@gmail.com' },
-  ];
-
-  const newOwner = new Owner({ name: 'James', email: 'james@gmail.com' });
+  const newOwner = new Owner({ name: 'Jane', email: 'jane@gmail.com' });
 
   newOwner
     .save()
@@ -29,6 +22,7 @@ router.get('/new', (req, res) => {
       res.render('owners/new', {
         title: 'Add owner',
         page: 'owners_new',
+        result,
       });
     })
     .catch((err) => console.warn(err));
