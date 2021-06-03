@@ -10,6 +10,7 @@ const PORT = 3000;
 const pagesRoutes = require('./routes/pagesRoutes');
 const ownersRoutes = require('./routes/ownersRoutes');
 const apiRoutes = require('./routes/api/apiRoutes');
+const ownersApiRoutes = require('./routes/api/ownersApiRoutes');
 
 //susiinstaliuojam mongoose , npm install mongoose
 //isitraukiam mongoose paketa
@@ -31,6 +32,7 @@ app.set('views', 'src/views');
 
 //for req.body to work
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 //pages routes
 app.use('/', pagesRoutes);
@@ -42,7 +44,9 @@ const staticPath = path.join(__dirname, 'static');
 app.use(express.static(staticPath));
 
 //isitraukti API route ir panaudoti cia , kad veiktu
+//ta /api/blog yra musu paciu sukurtas , tai kai nueisi i localhost:3000/api/blog/...... gausim tai ka norim
 app.use('/api/blog', apiRoutes);
+// app.use('/api/owners', ownersApiRoutes);
 
 //404 case , kai vartotojas ivede psl kurio nera
 app.use((req, res) => res.status(404).send('Ops , page not found'));

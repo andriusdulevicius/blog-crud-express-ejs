@@ -5,36 +5,43 @@ const Owner = require('../models/owner');
 
 //get owners
 router.get('/', (req, res) => {
-  res.render('owners/index', {
-    title: 'Owners',
-    page: 'owners',
-  });
-});
-//add new owner
-router.get('/new', (req, res) => {
-  //get tai ka ivedam i adresa, o render kelias iki failo su ejs galune
-
-  const newOwner = new Owner({ name: 'Jane', email: 'jane@gmail.com' });
-
-  newOwner
-    .save()
+  Owner.find()
     .then((result) => {
-      res.render('owners/new', {
-        title: 'Add owner',
-        page: 'owners_new',
+      res.render('owners/index', {
+        title: 'Owners',
+        page: 'owners',
         result,
       });
     })
-    .catch((err) => console.warn(err));
+    .catch((err) => console.error(err.message));
+});
+//formos parodymo route
+
+router.get('/new', (req, res) => {
+  res.render('owners/new', {
+    title: 'Add owner',
+    page: 'owners_new',
+  });
 });
 
-//edit owner
-router.get('/edit', (req, res) => {
-  //get tai ka ivedam i adresa, o render kelias iki failo su ejs galune
-  res.render('owners/edit', {
-    title: 'Edit owner',
-    page: 'owners_edit',
+//formos apdorojimo route
+router.post('/new', (req, res) => {
+  const newOwner = new Owner(req.body);
+  newOwner.save().then((result) => {
+    res.redirect('/owners?msg=Success');
   });
+});
+
+router.get('/single/:id', (req, res) => {
+  const blogId = req.params.id;
+  Owner.findById(blogId).then((result) =>
+    res.render('owners/view', {
+      title: 'single post',
+      page: 'owners_single',
+      result,
+      blogId,
+    })
+  );
 });
 
 module.exports = router;

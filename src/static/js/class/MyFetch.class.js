@@ -45,4 +45,18 @@ export default class MyFetch {
       .then((res) => res.json())
       .then((data) => successCallBack(data));
   }
+
+  static createOwner(data, successCallback) {
+    fetch('api/owners', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        successCallback(data);
+      });
+  }
 }

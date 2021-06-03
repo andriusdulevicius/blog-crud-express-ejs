@@ -6,11 +6,8 @@
 
 <main role="main">
   <h1 class="display-3">Add new owner</h1>
-  <% if (result) { %>
-  <div class="alert alert-success" role="alert">Owner <%= result.name %> created!</div>
 
-  <% } %>
-  <form action="/api/owners" method="POST" id="form">
+  <form action="/owners/new" method="POST" id="formO">
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class="form-control" id="name" name="name" required />
@@ -19,7 +16,7 @@
       <label for="email">Email</label>
       <input required type="email" class="form-control" id="email" name="email" />
     </div>
-    <button type="submit" class="btn btn-primary">Add post</button>
+    <button type="submit" class="btn btn-primary" id="add-owner">Add owner</button>
   </form>
 </main>
 
