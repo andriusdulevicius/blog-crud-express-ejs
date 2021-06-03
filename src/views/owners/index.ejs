@@ -7,10 +7,12 @@
 <main role="main">
   <h1 class="display-3">This is the owners page</h1>
   <!-- galima uzsideti success pop up po sukurimo -->
-  <!-- <%# if (locals.result) { %>
-  <div class="alert alert-success" role="alert">Owner <%#= result.name %> created!</div>
+  <% if (locals.result) { %>
+  <div class="alert alert-success" role="alert">Owner <%= result.name %> created!</div>
 
-  <%# } %> -->
+  <% } %> <% if (locals.msg) { %>
+  <div class="alert alert-danger" role="alert">Owner Deleted, Sad</div>
+  <% } %>
   <a href="/owners/new" class="btn btn-success btn-primary">Add new owner</a>
   <div class="album py-5 bg-light">
     <div class="container">
@@ -28,6 +30,9 @@
                 </div>
                 <small class="text-muted"><%- createdAt.toLocaleString()%></small>
               </div>
+              <form action="/owners/delete/<%= _id %>" method="POST">
+                <button class="btn btn-danger" type="submit">Delete me</button>
+              </form>
             </div>
           </div>
         </div>

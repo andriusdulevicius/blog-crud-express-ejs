@@ -11,7 +11,9 @@
 
     <p><%- result.createdAt.toLocaleString()%></p>
 
-    <a id="deleteBtn" class="btn btn-danger my-2">Delete</a>
+    <form action="/owners/delete/<%= blogId %>" method="POST">
+      <button class="btn btn-danger" type="submit">Delete</button>
+    </form>
   </div>
 </section>
 

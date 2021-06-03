@@ -10,7 +10,6 @@ const PORT = 3000;
 const pagesRoutes = require('./routes/pagesRoutes');
 const ownersRoutes = require('./routes/ownersRoutes');
 const apiRoutes = require('./routes/api/apiRoutes');
-const ownersApiRoutes = require('./routes/api/ownersApiRoutes');
 
 //susiinstaliuojam mongoose , npm install mongoose
 //isitraukiam mongoose paketa
