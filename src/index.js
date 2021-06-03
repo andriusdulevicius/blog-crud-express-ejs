@@ -8,6 +8,7 @@ const path = require('path');
 const PORT = 3000;
 
 const pagesRoutes = require('./routes/pagesRoutes');
+const ownersRoutes = require('./routes/ownersRoutes');
 const apiRoutes = require('./routes/api/apiRoutes');
 
 //susiinstaliuojam mongoose , npm install mongoose
@@ -33,19 +34,8 @@ app.use(express.json());
 
 //pages routes
 app.use('/', pagesRoutes);
-app.get('/owners', (req, res) => {
-  res.render('owners/index', {
-    title: 'Owners',
-    page: 'owners',
-  });
-});
-app.get('/owners/new', (req, res) => {
-  //get tai ka ivedam i adresa, o render kelias iki failo su ejs galune
-  res.render('owners/new', {
-    title: 'Add owner',
-    page: 'owners_new',
-  });
-});
+
+app.use('/owners', ownersRoutes);
 
 const staticPath = path.join(__dirname, 'static');
 //statine direktorija, css, js , imgs ir kt statiniam failam

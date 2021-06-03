@@ -1,13 +1,27 @@
 const express = require('express');
 const router = express.Router();
 
-const Post = require('../models/post');
-
-//homepage
-router.get('/owners', function (req, res) {
+//get owners
+router.get('/', (req, res) => {
   res.render('owners/index', {
     title: 'Owners',
     page: 'owners',
+  });
+});
+//add new owner
+router.get('/new', (req, res) => {
+  //get tai ka ivedam i adresa, o render kelias iki failo su ejs galune
+  res.render('owners/new', {
+    title: 'Add owner',
+    page: 'owners_new',
+  });
+});
+//edit owner
+router.get('/edit', (req, res) => {
+  //get tai ka ivedam i adresa, o render kelias iki failo su ejs galune
+  res.render('owners/edit', {
+    title: 'Edit owner',
+    page: 'owners_edit',
   });
 });
 
