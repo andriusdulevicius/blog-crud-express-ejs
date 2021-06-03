@@ -6,6 +6,7 @@ const Owner = require('../models/owner');
 //get owners
 router.get('/', (req, res) => {
   Owner.find()
+    .sort({ createdAt: -1 }) //isrikiuoja pagal sukurimo laika
     .then((result) => {
       res.render('owners/index', {
         title: 'Owners',
