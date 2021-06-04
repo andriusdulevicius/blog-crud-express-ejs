@@ -6,15 +6,15 @@
 
 <section id="one-post" class="jumbotron text-center" data-post-id="<%= blogId %>">
   <div class="container">
-    <h2><%-result.name%></h2>
-    <p class="lead text-muted"><%- result.email%></p>
+    <form id="edit-owner" data-post-id="<%=result._id%>"></form>
+    <h2><input value="<%-result.name%>" /></h2>
+    <p class="lead text-muted"><input value="<%- result.email%>" /></p>
 
     <p><%- result.createdAt.toLocaleString()%></p>
 
-    <form action="/owners/delete/<%= blogId %>" method="POST">
-      <button class="btn btn-danger" type="submit">Delete</button>
+    <form action="/owners" method="POST">
+      <button class="btn btn-success" type="submit">Save</button>
     </form>
-    <a class="btn btn-outline-secondary" href="/owners/edit/<%= blogId %>">Edit owner</a>
   </div>
 </section>
 

@@ -7,8 +7,7 @@ const Owner = require('../models/owner');
 router.get('/', (req, res) => {
   // was there a delete
   console.log(' req.query', req.query);
-  const deleteMsg = req.query.delete;
-  console.log(req.query.delete);
+  const feedback = req.query;
 
   // get all owners from db
   Owner.find()
@@ -18,7 +17,7 @@ router.get('/', (req, res) => {
         title: 'Owners',
         page: 'owners',
         result,
-        msg: deleteMsg,
+        feedback,
       });
     })
     .catch((err) => console.error(err.message));
@@ -50,7 +49,7 @@ router.post('/new', (req, res) => {
   newOwner
     .save()
     .then((result) => {
-      res.redirect('/owners?msg=Success');
+      res.redirect('/owners?msg=created&name=' + result.name);
     })
     .catch((err) => res.send('Opps did not save', err));
 });
@@ -58,8 +57,32 @@ router.post('/new', (req, res) => {
 // delete form
 router.post('/delete/:id', (req, res) => {
   Owner.findByIdAndDelete(req.params.id)
-    .then((result) => res.redirect('/owners?delete=true'))
+    .then((result) => res.redirect('/owners?msg=deleted&name=' + result.name))
     .catch((err) => res.send(`delete failed ${err}`));
+});
+
+//edit form
+
+router.get('/edit/:id', (req, res) => {
+  const blogId = req.params.id;
+  Owner.findById(blogId).then((result) =>
+    res.render('owners/edit', {
+      title: 'Edit post',
+      page: 'owners_edit',
+      result,
+      blogId,
+    })
+  );
+});
+
+//edit apdorojimo route
+
+router.put('/', (req, res) => {
+  Owner.findByIdAndUpdate(req.params.id, req.body)
+    .then((result) => {
+      res.json({ msg: 'success' });
+    })
+    .catch((err) => console.warn(err));
 });
 
 module.exports = router;
