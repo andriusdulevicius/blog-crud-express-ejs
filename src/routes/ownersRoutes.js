@@ -76,6 +76,7 @@ router.get('/edit/:id', (req, res) => {
 });
 
 //edit apdorojimo route
+//formos action dalyje nurodytas kelias kur keliauti , turi buti cia toks pat post dalyje, nes siuo adresu nukeliavus , bus atlikti tolimesni veiksmai
 
 router.post('/edit/:id', (req, res) => {
   Owner.findByIdAndUpdate(req.params.id, req.body)

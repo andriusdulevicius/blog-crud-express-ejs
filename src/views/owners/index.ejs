@@ -6,15 +6,7 @@
 
 <main role="main">
   <h1 class="display-3">This is the owners page</h1>
-  <!-- galima uzsideti success pop up po sukurimo -->
-  <% if (locals.feedback && feedback.msg === 'created') { %>
-  <div class="alert alert-success" role="alert">Owner <%=feedback.name%> created</div>
-  <!-- locals.feedback isvengia klaidos , nes tik su feedback.msg mestu klaida undefined -->
-  <% } %> <% if (locals.feedback && feedback.msg === 'deleted') { %>
-  <div class="alert alert-danger" role="alert">Owner <strong><%=feedback.name%></strong> was Deleted.</div>
-  <% } %> <% if (locals.feedback && feedback.msg === 'edited') { %>
-  <div class="alert alert-warning" role="alert">Owner <strong><%=feedback.name%></strong> was Edited.</div>
-  <% } %>
+  <%- include('_msg') %>
   <a href="/owners/new" class="btn btn-success btn-primary">Add new owner</a>
   <div class="album py-5 bg-light">
     <div class="container">
