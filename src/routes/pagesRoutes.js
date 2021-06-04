@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Post = require('../models/post');
+const blogControllers = require('../controllers/blogsController');
 
 //homepage
 router.get('/', function (req, res) {
@@ -32,52 +33,16 @@ router.get('/contact', function (req, res) {
 });
 
 //blogs page
-router.get('/blogs', function (req, res) {
-  Post.find()
-    .then((result) => {
-      res.render('blog/blogs', {
-        title: 'Blog',
-        page: 'blog',
-        blogs: result,
-      });
-    })
-    .catch((err) => console.error(err.message));
-});
+router.get('/blogs', blogControllers.blogs_page);
 //
 
 //create blog page  /blog/create
-router.get('/blog/create', function (req, res) {
-  // res.sendFile(path.join(__dirname, 'pages', 'blogs.html'));
-  res.render('blog/createBlog', {
-    title: 'Create Blog',
-    page: 'createB',
-  });
-});
+router.get('/blog/create', blogControllers.blog_create_page);
 
 //single page route
-router.get('/single/:id', function (req, res) {
-  const blogId = req.params.id;
-  Post.findById(blogId).then((result) =>
-    res.render('blog/singlePage', {
-      title: 'single post',
-      page: 'single',
-      result,
-      blogId,
-    })
-  );
-});
+router.get('/single/:id', blogControllers.blog_single);
 
 //edit page route
-router.get('/single/edit/:id', function (req, res) {
-  const blogId = req.params.id;
-  Post.findById(blogId).then((result) => {
-    res.render('blog/singlePageEdit', {
-      title: 'Edit',
-      page: 'edit',
-      result,
-      blogId,
-    });
-  });
-});
+router.get('/single/edit/:id', blogControllers.blog_edit_page);
 
 module.exports = router;
