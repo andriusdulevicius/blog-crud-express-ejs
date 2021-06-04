@@ -11,11 +11,12 @@
 
     <p><%- result.createdAt.toLocaleString()%></p>
 
-    <form action="/owners/delete/<%= blogId %>" method="POST">
-      <button class="btn btn-danger" type="submit">Delete</button>
-    </form>
     <a class="btn btn-outline-secondary" href="/owners/edit/<%= blogId %>">Edit owner</a>
+    <a href="/owners" class="btn btn-primary my-2">Go back</a>
   </div>
+  <form action="/owners/delete/<%= blogId %>" method="POST">
+    <button class="btn btn-danger" type="submit">Delete</button>
+  </form>
 </section>
 
 <%-include('../partials/footer.ejs')%>

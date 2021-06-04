@@ -77,10 +77,11 @@ router.get('/edit/:id', (req, res) => {
 
 //edit apdorojimo route
 
-router.put('/', (req, res) => {
+router.post('/edit/:id', (req, res) => {
   Owner.findByIdAndUpdate(req.params.id, req.body)
+
     .then((result) => {
-      res.json({ msg: 'success' });
+      res.redirect('/owners?msg=edited&name=' + result.name);
     })
     .catch((err) => console.warn(err));
 });

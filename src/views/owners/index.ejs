@@ -12,6 +12,8 @@
   <!-- locals.feedback isvengia klaidos , nes tik su feedback.msg mestu klaida undefined -->
   <% } %> <% if (locals.feedback && feedback.msg === 'deleted') { %>
   <div class="alert alert-danger" role="alert">Owner <strong><%=feedback.name%></strong> was Deleted.</div>
+  <% } %> <% if (locals.feedback && feedback.msg === 'edited') { %>
+  <div class="alert alert-warning" role="alert">Owner <strong><%=feedback.name%></strong> was Edited.</div>
   <% } %>
   <a href="/owners/new" class="btn btn-success btn-primary">Add new owner</a>
   <div class="album py-5 bg-light">
