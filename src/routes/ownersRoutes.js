@@ -2,26 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const Owner = require('../models/owner');
+const ownerControllers = require('../controllers/ownersController');
+//arba {owners_index}
 
-//get owners
-router.get('/', (req, res) => {
-  // was there a delete
-  console.log(' req.query', req.query);
-  const feedback = req.query;
-
-  // get all owners from db
-  Owner.find()
-    .sort({ updatedAt: -1 }) //isrikiuoja pagal sukurimo laika
-    .then((result) => {
-      res.render('owners/index', {
-        title: 'Owners',
-        page: 'owners',
-        result,
-        feedback,
-      });
-    })
-    .catch((err) => console.error(err.message));
-});
+//get owners        //cia skliausteliu nereikia nes nurodome nuoroda i funkcija, bet jos dar nevykdom
+router.get('/', ownerControllers.owners_index);
 
 //get single owner
 router.get('/single/:id', (req, res) => {
