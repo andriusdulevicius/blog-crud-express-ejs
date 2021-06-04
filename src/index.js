@@ -10,7 +10,7 @@ const PORT = 3000;
 const pagesRoutes = require('./routes/pagesRoutes');
 const ownersRoutes = require('./routes/ownersRoutes');
 const apiRoutes = require('./routes/api/apiRoutes');
-
+const blogRoutes = require('./routes/blogRoutes');
 //susiinstaliuojam mongoose , npm install mongoose
 //isitraukiam mongoose paketa
 const mongoose = require('mongoose');
@@ -37,6 +37,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/', pagesRoutes);
 
 app.use('/owners', ownersRoutes);
+app.use('/blog', blogRoutes);
 
 const staticPath = path.join(__dirname, 'static');
 //statine direktorija, css, js , imgs ir kt statiniam failam

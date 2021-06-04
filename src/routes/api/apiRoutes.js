@@ -21,14 +21,14 @@ router.post('/', (req, res) => {
   //kad issaugoti duomenu bazeje naudojam .save() metoda
   newPost
     .save() //issaugom duomenis , kadangi asinchronine funkcija, reikia then
-    .then(() => res.json({ msg: 'success', redirect: '/blogs' }))
+    .then(() => res.json({ msg: 'success', redirect: '/blog' }))
     .catch((err) => console.error(err));
 });
 
 router.delete('/:id', (req, res) => {
   Post.findByIdAndRemove(req.params.id)
     .then((result) => {
-      res.json({ msg: 'success', redirect: '/blogs' });
+      res.json({ msg: 'success', redirect: '/blog' });
     })
     .catch((err) => console.warn(err));
 });
@@ -42,7 +42,7 @@ router.put('/', (req, res) => {
 
   Post.findByIdAndUpdate(_id, { title, author, body })
     .then((result) => {
-      res.json({ msg: 'success', redirect: '/blogs' });
+      res.json({ msg: 'success', redirect: '/blog' });
     })
     .catch((err) => console.warn(err));
 });
