@@ -26,5 +26,6 @@ router.get('/edit/:id', ownerControllers.owner_edit_form);
 //edit apdorojimo route
 //formos action dalyje nurodytas kelias kur keliauti , turi buti cia toks pat post dalyje, nes siuo adresu nukeliavus , bus atlikti tolimesni veiksmai
 router.post('/edit/:id', ownerControllers.owner_edit_post);
+router.get('/search', ownerControllers.owner_search);
 
 module.exports = router;

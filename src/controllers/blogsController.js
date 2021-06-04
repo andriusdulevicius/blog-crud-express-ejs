@@ -2,6 +2,7 @@ const Post = require('../models/post');
 
 const blogs_page = (req, res) => {
   Post.find()
+    .sort({ updatedAt: -1 }) //isrikiuoja pagal sukurimo laika
     .then((result) => {
       res.render('blog/blogs', {
         title: 'Blog',

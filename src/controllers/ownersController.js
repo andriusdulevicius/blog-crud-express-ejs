@@ -75,6 +75,21 @@ const owner_edit_post = (req, res) => {
     .catch((err) => console.warn(err));
 };
 
+const owner_search = (req, res) => {
+  // console.log(req.query.searchTerm); //name atributas formoje searchTerm
+  const searchRegex = new RegExp(req.query.searchTerm, 'i'); //randa betkokia vardo dali
+  Owner.find({ name: searchRegex })
+    .then((found) => {
+      res.render('owners/index', {
+        title: 'Owners',
+        page: 'owners',
+        result: found,
+        search: req.query.searchTerm,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
 module.exports = {
   owners_index,
   owners_single,
@@ -83,4 +98,5 @@ module.exports = {
   owner_delete,
   owner_edit_form,
   owner_edit_post,
+  owner_search,
 };
