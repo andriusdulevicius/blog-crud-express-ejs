@@ -19,7 +19,7 @@
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row">
-        <% result.forEach(({_id,name,email,createdAt}) => {%>
+        <% result.forEach(({_id,name,email,updatedAt}) => {%>
         <!-- one card -->
         <div id="one-post" class="col-md-4" data-post-id="<%=_id %>">
           <div class="card mb-4 shadow-sm">
@@ -30,7 +30,7 @@
                 <div class="btn-group">
                   <a href="/owners/single/<%=_id%>" class="btn btn-sm btn-outline-secondary">View</a>
                 </div>
-                <small class="text-muted"><%- createdAt.toLocaleString()%></small>
+                <small class="text-muted"><%- updatedAt.toLocaleString()%></small>
               </div>
               <form action="/owners/delete/<%= _id %>" method="POST">
                 <button class="btn btn-danger" type="submit">Delete me</button>

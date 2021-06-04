@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 
   // get all owners from db
   Owner.find()
-    .sort({ createdAt: -1 }) //isrikiuoja pagal sukurimo laika
+    .sort({ updatedAt: -1 }) //isrikiuoja pagal sukurimo laika
     .then((result) => {
       res.render('owners/index', {
         title: 'Owners',
