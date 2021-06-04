@@ -19,6 +19,19 @@ const owners_index = (req, res) => {
     .catch((err) => console.error(err.message));
 };
 
+const owners_single = (req, res) => {
+  const blogId = req.params.id;
+  Owner.findById(blogId).then((result) =>
+    res.render('owners/view', {
+      title: 'single post',
+      page: 'owners_single',
+      result,
+      blogId,
+    })
+  );
+};
+
 module.exports = {
   owners_index,
+  owners_single,
 };

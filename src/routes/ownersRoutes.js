@@ -9,17 +9,8 @@ const ownerControllers = require('../controllers/ownersController');
 router.get('/', ownerControllers.owners_index);
 
 //get single owner
-router.get('/single/:id', (req, res) => {
-  const blogId = req.params.id;
-  Owner.findById(blogId).then((result) =>
-    res.render('owners/view', {
-      title: 'single post',
-      page: 'owners_single',
-      result,
-      blogId,
-    })
-  );
-});
+router.get('/single/:id', ownerControllers.owners_single);
+
 //formos parodymo route
 router.get('/new', (req, res) => {
   res.render('owners/new', {
