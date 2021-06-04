@@ -10,6 +10,4 @@ module.exports = {
     ecmaVersion: 12,
   },
   rules: {},
-  //kad nemestu klaidos html, ejs failams , bet meta kita errora
-  // overrides: [{ excludeFiles: '*.ejs' }],
 };
