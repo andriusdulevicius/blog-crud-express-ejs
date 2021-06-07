@@ -19,7 +19,7 @@
     <button class="btn btn-danger" type="submit">Delete</button>
   </form>
 </section>
-<% if(!houses===[]) {%>
+<% if(houses.length > 0) {%>
 <h5 class="my-3">Owners Properties</h5>
 <% houses.forEach(({ houseNo, street, town })=> { %>
 <ul class="list-group my-3">

@@ -20,25 +20,24 @@ const owners_index = (req, res) => {
     .catch((err) => console.error(err.message));
 };
 
-const owners_single = (req, res) => {
+const owners_single = async (req, res) => {
   const ownerId = req.params.id;
   //kur ownersId sutampa su req.params.id , tuos tik atrinksim i find
-  House.find({ ownersId: ownerId })
-    .exec()
-    .then((found) => findOwner(found))
 
-    .catch((err) => console.log(err));
-
-  function findOwner(houses) {
-    Owner.findById(ownerId).then((result) =>
-      res.render('owners/view', {
-        title: 'single post',
-        page: 'owners_single',
-        result,
-        ownerId,
-        houses,
-      })
-    );
+  try {
+    const houses = await House.find({ ownersId: ownerId }).exec();
+    const currentOwner = await Owner.findById(ownerId);
+    res.render('owners/view', {
+      title: 'single post',
+      page: 'owners_single',
+      result: currentOwner,
+      ownerId,
+      houses,
+    });
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+    //klaidos gaudymas try catch bloke
   }
 };
 
