@@ -10,7 +10,7 @@
   <a href="/owners/new" class="btn btn-success btn-primary">Add new owner</a>
   <div class="album py-5 bg-light">
     <div class="container">
-      <div class="row">
+      <div class="row owners-container">
         <% if (result.length > 0) { %> <% result.forEach(({_id,name,email,updatedAt}) => {%>
         <!-- one card -->
         <div id="one-post" class="col-md-4" data-post-id="<%=_id %>">

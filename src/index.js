@@ -48,7 +48,6 @@ app.use(express.static(staticPath));
 //ta /api/blog yra musu paciu sukurtas , tai kai nueisi i localhost:3000/api/blog/...... gausim tai ka norim
 app.use('/api/blog', apiRoutes);
 app.use('/api/owners', apiOwnersRoutes);
-// app.use('/api/owners', ownersApiRoutes);
 
 //404 case , kai vartotojas ivede psl kurio nera
 app.use((req, res) => res.status(404).send('Ops , page not found'));
