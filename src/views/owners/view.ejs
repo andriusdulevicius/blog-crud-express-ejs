@@ -12,6 +12,7 @@
     <p><%- result.createdAt.toLocaleString()%></p>
 
     <a class="btn btn-outline-secondary" href="/owners/edit/<%= blogId %>">Edit owner</a>
+    <a class="btn btn-outline-secondary" href="/house/new/<%= blogId %>">Add house to this owner</a>
     <a href="/owners" class="btn btn-primary my-2">Go back</a>
   </div>
   <form action="/owners/delete/<%= blogId %>" method="POST">

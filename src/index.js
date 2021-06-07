@@ -12,6 +12,7 @@ const ownersRoutes = require('./routes/ownersRoutes');
 const apiRoutes = require('./routes/api/apiRoutes');
 const apiOwnersRoutes = require('./routes/api/apiOwners');
 const blogRoutes = require('./routes/blogRoutes');
+const houseRoutes = require('./routes/houseRoutes');
 //susiinstaliuojam mongoose , npm install mongoose
 //isitraukiam mongoose paketa
 const mongoose = require('mongoose');
@@ -39,6 +40,7 @@ app.use('/', pagesRoutes);
 
 app.use('/owners', ownersRoutes);
 app.use('/blog', blogRoutes);
+app.use('/house', houseRoutes);
 
 const staticPath = path.join(__dirname, 'static');
 //statine direktorija, css, js , imgs ir kt statiniam failam
