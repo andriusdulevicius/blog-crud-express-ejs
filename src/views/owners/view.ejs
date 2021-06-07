@@ -4,20 +4,27 @@
 <!-- //ikeliam bendra navigacijos faila dinamiskai -->
 <%- include('../partials/nav.ejs')%>
 
-<section id="one-post" class="jumbotron text-center" data-post-id="<%= blogId %>">
+<section id="one-post" class="jumbotron text-center" data-post-id="<%= ownerId %>">
   <div class="container">
     <h2><%-result.name%></h2>
     <p class="lead text-muted"><%- result.email%></p>
 
     <p><%- result.createdAt.toLocaleString()%></p>
 
-    <a class="btn btn-outline-secondary" href="/owners/edit/<%= blogId %>">Edit owner</a>
-    <a class="btn btn-outline-secondary" href="/house/new/<%= blogId %>">Add house to this owner</a>
+    <a class="btn btn-outline-secondary" href="/owners/edit/<%= ownerId %>">Edit owner</a>
+    <a class="btn btn-outline-secondary" href="/house/new/<%= ownerId %>">Add house to this owner</a>
     <a href="/owners" class="btn btn-primary my-2">Go back</a>
   </div>
-  <form action="/owners/delete/<%= blogId %>" method="POST">
+  <form action="/owners/delete/<%= ownerId %>" method="POST">
     <button class="btn btn-danger" type="submit">Delete</button>
   </form>
 </section>
-
-<%-include('../partials/footer.ejs')%>
+<% if(!houses===[]) {%>
+<h5 class="my-3">Owners Properties</h5>
+<% houses.forEach(({ houseNo, street, town })=> { %>
+<ul class="list-group my-3">
+  <li class="list-group-item"><%= `House number: ${houseNo}` %></li>
+  <li class="list-group-item"><%= `Street: ${street}` %></li>
+  <li class="list-group-item"><%= `Town: ${town}` %></li>
+</ul>
+<% }) %> <%}%> <%-include('../partials/footer.ejs')%>
