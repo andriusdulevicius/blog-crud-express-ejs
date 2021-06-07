@@ -13,14 +13,10 @@ class SearchOwners {
     this.container.innerHTML = '';
   }
   generateContainer() {
-    console.log('iskvieciu generateContainer');
-
     const userInput = this.inputEl.value;
     const inputJson = JSON.stringify({ search: userInput }); // reikia sukurti objektas, nes json gali buti tik objektas
     MyFetch.searchOwners(inputJson, (result) => {
       const resArr = result.found;
-      console.log(result);
-      console.log(this.container);
 
       resArr.forEach((ownerData) => {
         const oneCard = this.generateOneCard(ownerData);
@@ -30,6 +26,7 @@ class SearchOwners {
   }
   generateOneCard({ _id, name, email, updatedAt }) {
     const oneCard = document.createElement('div');
+    const updatedAtTime = new Date(updatedAt).toLocaleString();
     oneCard.innerHTML = `
         <div class="card mb-4 shadow-sm">
           <div class="card-body">
@@ -39,7 +36,7 @@ class SearchOwners {
               <div class="btn-group">
                 <a href="/owners/single/${_id}" class="btn btn-sm btn-outline-secondary">View</a>
               </div>
-              <small class="text-muted">${updatedAt.toLocaleString()}</small>
+              <small class="text-muted">${updatedAtTime}</small>
             </div>
             <form action="/owners/delete/${_id}" method="POST">
               <button class="btn btn-danger" type="submit">Delete me</button>
