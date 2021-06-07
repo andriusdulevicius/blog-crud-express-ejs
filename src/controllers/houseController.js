@@ -20,7 +20,7 @@ const house_new_post = (req, res) => {
 
   newHouse
     .save() //issaugom duomenis , kadangi asinchronine funkcija, reikia then
-    .then(() => res.json({ msg: 'success', redirect: '/owners/' + ownersId }))
+    .then(() => res.redirect('/owners/single/' + ownersId))
     .catch((err) => console.error(err));
 };
 
