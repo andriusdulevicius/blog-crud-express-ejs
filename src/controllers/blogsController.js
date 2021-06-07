@@ -1,4 +1,5 @@
 const Post = require('../models/post');
+const Comment = require('../models/comment');
 
 const blogs_page = (req, res) => {
   Post.find()
@@ -21,16 +22,25 @@ const blog_create_page = (req, res) => {
   });
 };
 
-const blog_single = (req, res) => {
+const blog_single = async (req, res) => {
   const blogId = req.params.id;
-  Post.findById(blogId).then((result) =>
+  //kur blogId sutampa su req.params.id , tuos tik atrinksim i find
+
+  try {
+    const comments = await Comment.find({ postId: blogId }).exec();
+    const currentPost = await Post.findById(blogId);
     res.render('blog/singlePage', {
       title: 'single post',
-      page: 'single',
-      result,
+      page: 'post_single',
+      result: currentPost,
       blogId,
-    })
-  );
+      comments,
+    });
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+    //klaidos gaudymas try catch bloke
+  }
 };
 
 const blog_edit_page = (req, res) => {
